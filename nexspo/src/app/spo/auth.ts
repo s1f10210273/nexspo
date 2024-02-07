@@ -16,20 +16,6 @@ async function getSpotifyToken() {
   return tokenResponse.data.access_token;
 }
 
-export async function getShowInfo(showId: string) {
-  const token = await getSpotifyToken();
-
-  const showResponse = await axios({
-      method: 'get',
-      url: `https://api.spotify.com/v1/shows/${showId}`,
-      headers: {
-      'Authorization': `Bearer ${token}`
-      }
-  });
-
-  return showResponse.data;
-}
-
 export async function getTrackInfo(id: string) {
   const token = await getSpotifyToken();
 
@@ -44,9 +30,16 @@ export async function getTrackInfo(id: string) {
   return response.data;
 }
 
-// 今回は、showで別のURLでも取れるように分離
-// https://open.spotify.com/show/6BSPw7yLnXxb2jFuuCyXpb ←ここ
-// const showId = '6BSPw7yLnXxb2jFuuCyXpb'; // SpotifyのShowのID
-// getShowInfo(showId).then(showInfo => {
-//   console.log(showInfo);
-// });
+export async function getTrackFeatures(id: string) {
+  const token = await getSpotifyToken();
+
+  const response = await axios({
+      method: 'get',
+      url: `https://api.spotify.com/v1/audio-features/${id}`,
+      headers: {
+      'Authorization': `Bearer ${token}`
+      }
+  });
+
+  return response.data;
+}
