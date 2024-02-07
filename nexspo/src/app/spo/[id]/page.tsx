@@ -95,64 +95,64 @@ export default function Spo({ params }: { params: { id: string } }) {
         </div>
 
         {/* 表カード */}
-        <div className="mt-8 text-4xl font-bold text-center text-gray-800">Audio Features</div>
-        <div className="mt-3 m-1 relative overflow-x-auto shadow-md rounded-lg">
-            <table className="w-full text-sm text-left rtl:text-right text-sky-100">
-                <tbody>
-                    <tr className="bg-gray-600 border-b border-gray-400">
-                        <th scope="row" className="px-6 py-4 font-medium bg-gray-500 text-gray-50 whitespace-nowrap">
-                        BPM
-                        </th>
-                        <td className="px-6 py-4">
-                            {feature.tempo}
-                        </td>
-                    </tr>
-                    <tr className="bg-gray-600 border-b border-gray-400">
-                        <th scope="row" className="px-6 py-4 font-medium bg-gray-500 text-gray-50 whitespace-nowrap">
-                            KEY
-                        </th>
-                        <td className="px-6 py-4">
-                            {getKeyName(feature.key)}
-                        </td>
-                    </tr>
-                    <tr className="bg-gray-600 border-b border-gray-400">
-                        <th scope="row" className="px-6 py-4 font-medium bg-gray-500 text-gray-50 whitespace-nowrap">
-                            mode
-                        </th>
-                        <td className="px-6 py-4">
-                            {feature.mode === 0 ? 'minor' : 'major'}
-                        </td>
-                    </tr>
-                    <tr className="bg-gray-600 border-b border-gray-400">
-                        <th scope="row" className="px-6 py-4 font-medium bg-gray-500 text-gray-50 whitespace-nowrap">
-                        loudness
-                        </th>
-                        <td className="px-6 py-4">
-                            {feature.loudness} dB
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div className="mt-3 w-full mx-auto">
-          <div className="m-1 bg-gray-500 text-gray-50 rounded-lg shadow-md p-5">
-            <div className="flex flex-col space-y-4">
-              {data.labels.map((label: string, index: number) => (
-                <div key={index} className="flex items-center space-x-2">
-                  <div className="w-24">{label}</div>
-                  <div className="flex-1 h-6 relative">
-                    <div
-                      className="absolute inset-0 bg-gray-700"
-                      style={{
-                        width: `${(data.datasets[0].data[index] || 0) * 100}%`,
-                      }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        <div>
+  <div className="mt-8 text-4xl font-bold text-center text-gray-800">Audio Features</div>
+    <div className="mt-3 m-1 relative overflow-x-auto shadow-md rounded-lg">
+      <table className="w-full text-sm text-left rtl:text-right text-gray-100">
+        <tbody>
+          <tr className="bg-gray-500 border-b border-gray-400">
+            <th scope="row" className="px-6 py-4 font-medium bg-gray-500 text-gray-50 whitespace-nowrap">
+              BPM
+            </th>
+            <td className="px-6 py-4">
+              {feature.tempo}
+            </td>
+          </tr>
+          <tr className="bg-gray-500 border-b border-gray-400">
+            <th scope="row" className="px-6 py-4 font-medium bg-gray-500 text-gray-50 whitespace-nowrap">
+              KEY
+            </th>
+            <td className="px-6 py-4">
+              {getKeyName(feature.key)}
+            </td>
+          </tr>
+          <tr className="bg-gray-500 border-b border-gray-400">
+            <th scope="row" className="px-6 py-4 font-medium bg-gray-500 text-gray-50 whitespace-nowrap">
+              mode
+            </th>
+            <td className="px-6 py-4">
+              {feature.mode === 0 ? 'minor' : 'major'}
+            </td>
+          </tr>
+          <tr className="bg-gray-500 border-b border-gray-400">
+            <th scope="row" className="px-6 py-4 font-medium bg-gray-500 text-gray-50 whitespace-nowrap">
+              loudness
+            </th>
+            <td className="px-6 py-4">
+              {feature.loudness} dB
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div className="mt-3 m-1 relative overflow-x-auto shadow-md rounded-lg">
+      <table className="w-full text-sm text-left rtl:text-right text-gry-100">
+        <tbody>
+          {data.labels.map((label: string, index: number) => (
+            <tr key={index} className="bg-gray-500 border-b border-gray-400">
+              <th scope="row" className="px-6 py-4 font-medium bg-gray-500 text-gray-50 whitespace-nowrap">
+                {label}
+              </th>
+              <td className="p-4 pr-40 relative">
+                <div className="absolute inset-0 bg-gray-600 rounded-r-lg" style={{ width: `${(data.datasets[0].data[index] || 0) * 100}%` }}></div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
 
         <div className="flex justify-center items-center">
           <div className="text-center">
@@ -166,11 +166,7 @@ export default function Spo({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-
-
       </div>
-
-
 
     ) : (
       <div className="flex justify-center items-center h-screen" aria-label="読み込み中">
