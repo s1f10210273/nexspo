@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const clientId = 'a984709e653c41bc8fcb84ac6de80607';
-const clientSecret = 'fa78f30d639b4ad9aac0f9184bd30224';
+const clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
+const clientSecret = process.env.NEXT_PUBLIC_CLIENT_SECRET;
 
 async function getSpotifyToken() {
   const tokenResponse = await axios({
