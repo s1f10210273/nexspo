@@ -1,8 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import { getTrackInfo, getTrackFeatures } from "../auth";
-import { Bar } from 'react-chartjs-2';
-import { LinearScaleOptions } from 'chart.js';
+import Link from 'next/link'
 import "./trackInfo";
 import "./trackfeatures";
 
@@ -95,7 +94,6 @@ export default function Spo({ params }: { params: { id: string } }) {
           </div>
         </div>
 
-
         {/* 表カード */}
         <div className="mt-8 text-4xl font-bold text-center text-gray-800">Audio Features</div>
         <div className="mt-3 m-1 relative overflow-x-auto shadow-md rounded-lg">
@@ -156,8 +154,18 @@ export default function Spo({ params }: { params: { id: string } }) {
           </div>
         </div>
 
-        <div className="p-10 text-center text-gray-400">oshikubo shuei</div>
-
+        <div className="flex justify-center items-center">
+          <div className="text-center">
+            <div className="p-5 text-gray-400 flex items-center justify-center">
+              <Link href="/" >
+                <svg className="h-16 w-16 mr-4 text-gray-700" width="48" height="48" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="15 6 9 12 15 18" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
 
 
       </div>
@@ -165,7 +173,9 @@ export default function Spo({ params }: { params: { id: string } }) {
 
 
     ) : (
-      <p>Loading...</p>
+      <div className="flex justify-center items-center h-screen" aria-label="読み込み中">
+        <div className="animate-spin h-11 w-11 bg-gray-500 rounded-xl"></div>
+      </div>
     )}
   </div>
   );
