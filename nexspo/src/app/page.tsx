@@ -15,7 +15,8 @@ export default function MyForm() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const Pattern = /^https:\/\/open\.spotify\.com\/intl-ja\/track\/[a-zA-Z0-9?=&]+/;
+    const Pattern = /^https:\/\/open\.spotify\.com(.*)\/track\/[a-zA-Z0-9?=&]+/;
+
 
     if (!Pattern.test(inputValue)) {
       setErrorMessage('Invalid Spotify track URL');
